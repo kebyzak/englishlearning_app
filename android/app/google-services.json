@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105766901668",
+    "project_id": "englishglossary-c56e1",
+    "storage_bucket": "englishglossary-c56e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105766901668:android:acbb8cdb162380879c1331",
+        "android_client_info": {
+          "package_name": "com.example.englishlearning_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0LI6icmGCExnCF8RKH-XHSot2u31OcKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
