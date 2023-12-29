@@ -1,88 +1,107 @@
+import 'package:englishlearning_app/data/repository/auth_repository.dart';
+import 'package:englishlearning_app/generated/l10n.dart';
 import 'package:englishlearning_app/presentation/bloc/user_bloc/user_bloc.dart';
-import 'package:englishlearning_app/presentation/screens/signup_screen.dart';
+import 'package:englishlearning_app/presentation/widgets/app_button.dart';
 import 'package:englishlearning_app/presentation/widgets/error_dialog.dart';
-import 'package:englishlearning_app/presentation/widgets/loading_dialog.dart';
+import 'package:englishlearning_app/presentation/widgets/text_field.dart';
+import 'package:englishlearning_app/router/app_routes.dart';
+// ignore: depend_on_referenced_packages
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:englishlearning_app/presentation/screens/home_screen.dart';
 
 class SignInScreen extends StatelessWidget {
-  final UserBloc userBloc = UserBloc();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final UserBloc userBloc = UserBloc(authRepository: AuthRepository());
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   SignInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign In'),
-      ),
       resizeToAvoidBottomInset: false,
       body: BlocConsumer<UserBloc, UserState>(
         listener: (context, state) {
           state.maybeWhen(
             orElse: () {},
             success: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
-                ),
-              );
-            },
-            loading: () {
-              showDialog(
-                context: context,
-                builder: (context) => const LoadingDialog(),
-              );
-            },
-            error: () {
-              showDialog(
-                context: context,
-                builder: (context) => const ErrorDialog(),
+              Navigator.pushNamed(
+                context,
+                AppRoutes.homeScreen,
               );
             },
           );
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                TextField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
-                ),
-                TextField(
-                  controller: _passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
-                  obscureText: true,
-                ),
-                const SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<UserBloc>().add(
-                          UserEvent.signIn(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                          ),
-                        );
-                  },
-                  child: const Text('Sign In'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Center(
+                        child: Lottie.asset(
+                          'assets/animations/signin.json',
+                          width: 250,
+                          height: 250,
+                        ),
                       ),
-                    );
-                  },
-                  child: const Text('Do not have an account? Sign Up'),
+                      MyTextField(
+                        controller: _emailController,
+                        text: S.of(context).email,
+                      ),
+                      const SizedBox(height: 12),
+                      MyTextField(
+                        controller: _passwordController,
+                        text: S.of(context).password,
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 16.0),
+                      AppButton(
+                        text: (S.of(context).signIn),
+                        onPressed: () {
+                          context.read<UserBloc>().add(
+                                UserEvent.signIn(
+                                  email: _emailController.text,
+                                  password: _passwordController.text,
+                                ),
+                              );
+                        },
+                      ),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.signUpScreen,
+                            );
+                          },
+                          child: Text(
+                            S.of(context).doNotHaveAnAccountSignUp,
+                            style: TextStyle(
+                              color: Colors.orange.shade300,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+              state.maybeWhen(
+                orElse: () => const SizedBox(),
+                loading: () {
+                  return Lottie.asset('assets/animations/loading.json');
+                },
+                error: () => ErrorDialog(
+                  errorMessage: S.of(context).emailOrPasswordIsIncorrect,
+                ),
+              ),
+            ],
           );
         },
       ),

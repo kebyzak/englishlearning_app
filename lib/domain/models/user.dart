@@ -7,7 +7,7 @@ part 'user.freezed.dart';
 @freezed
 abstract class User with _$User {
   factory User({
-    required String id,
+    required String uid,
     required String name,
     required String email,
   }) = _User;

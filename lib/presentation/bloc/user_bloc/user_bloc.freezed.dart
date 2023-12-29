@@ -21,21 +21,21 @@ mixin _$UserEvent {
     required TResult Function(String email, String password) signIn,
     required TResult Function(String email, String password, String name)
         signUp,
-    required TResult Function() resetState,
+    required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? signIn,
     TResult? Function(String email, String password, String name)? signUp,
-    TResult? Function()? resetState,
+    TResult? Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? signIn,
     TResult Function(String email, String password, String name)? signUp,
-    TResult Function()? resetState,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,21 +43,21 @@ mixin _$UserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInEvent value) signIn,
     required TResult Function(_SignUpEvent value) signUp,
-    required TResult Function(_ResetStateEvent value) resetState,
+    required TResult Function(_SignOutEvent value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInEvent value)? signIn,
     TResult? Function(_SignUpEvent value)? signUp,
-    TResult? Function(_ResetStateEvent value)? resetState,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInEvent value)? signIn,
     TResult Function(_SignUpEvent value)? signUp,
-    TResult Function(_ResetStateEvent value)? resetState,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,7 +156,7 @@ class _$SignInEventImpl implements _SignInEvent {
     required TResult Function(String email, String password) signIn,
     required TResult Function(String email, String password, String name)
         signUp,
-    required TResult Function() resetState,
+    required TResult Function() signOut,
   }) {
     return signIn(email, password);
   }
@@ -166,7 +166,7 @@ class _$SignInEventImpl implements _SignInEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? signIn,
     TResult? Function(String email, String password, String name)? signUp,
-    TResult? Function()? resetState,
+    TResult? Function()? signOut,
   }) {
     return signIn?.call(email, password);
   }
@@ -176,7 +176,7 @@ class _$SignInEventImpl implements _SignInEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? signIn,
     TResult Function(String email, String password, String name)? signUp,
-    TResult Function()? resetState,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -190,7 +190,7 @@ class _$SignInEventImpl implements _SignInEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInEvent value) signIn,
     required TResult Function(_SignUpEvent value) signUp,
-    required TResult Function(_ResetStateEvent value) resetState,
+    required TResult Function(_SignOutEvent value) signOut,
   }) {
     return signIn(this);
   }
@@ -200,7 +200,7 @@ class _$SignInEventImpl implements _SignInEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInEvent value)? signIn,
     TResult? Function(_SignUpEvent value)? signUp,
-    TResult? Function(_ResetStateEvent value)? resetState,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) {
     return signIn?.call(this);
   }
@@ -210,7 +210,7 @@ class _$SignInEventImpl implements _SignInEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInEvent value)? signIn,
     TResult Function(_SignUpEvent value)? signUp,
-    TResult Function(_ResetStateEvent value)? resetState,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) {
     if (signIn != null) {
@@ -317,7 +317,7 @@ class _$SignUpEventImpl implements _SignUpEvent {
     required TResult Function(String email, String password) signIn,
     required TResult Function(String email, String password, String name)
         signUp,
-    required TResult Function() resetState,
+    required TResult Function() signOut,
   }) {
     return signUp(email, password, name);
   }
@@ -327,7 +327,7 @@ class _$SignUpEventImpl implements _SignUpEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? signIn,
     TResult? Function(String email, String password, String name)? signUp,
-    TResult? Function()? resetState,
+    TResult? Function()? signOut,
   }) {
     return signUp?.call(email, password, name);
   }
@@ -337,7 +337,7 @@ class _$SignUpEventImpl implements _SignUpEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? signIn,
     TResult Function(String email, String password, String name)? signUp,
-    TResult Function()? resetState,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (signUp != null) {
@@ -351,7 +351,7 @@ class _$SignUpEventImpl implements _SignUpEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInEvent value) signIn,
     required TResult Function(_SignUpEvent value) signUp,
-    required TResult Function(_ResetStateEvent value) resetState,
+    required TResult Function(_SignOutEvent value) signOut,
   }) {
     return signUp(this);
   }
@@ -361,7 +361,7 @@ class _$SignUpEventImpl implements _SignUpEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInEvent value)? signIn,
     TResult? Function(_SignUpEvent value)? signUp,
-    TResult? Function(_ResetStateEvent value)? resetState,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) {
     return signUp?.call(this);
   }
@@ -371,7 +371,7 @@ class _$SignUpEventImpl implements _SignUpEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInEvent value)? signIn,
     TResult Function(_SignUpEvent value)? signUp,
-    TResult Function(_ResetStateEvent value)? resetState,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) {
     if (signUp != null) {
@@ -396,35 +396,35 @@ abstract class _SignUpEvent implements UserEvent {
 }
 
 /// @nodoc
-abstract class _$$ResetStateEventImplCopyWith<$Res> {
-  factory _$$ResetStateEventImplCopyWith(_$ResetStateEventImpl value,
-          $Res Function(_$ResetStateEventImpl) then) =
-      __$$ResetStateEventImplCopyWithImpl<$Res>;
+abstract class _$$SignOutEventImplCopyWith<$Res> {
+  factory _$$SignOutEventImplCopyWith(
+          _$SignOutEventImpl value, $Res Function(_$SignOutEventImpl) then) =
+      __$$SignOutEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ResetStateEventImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$ResetStateEventImpl>
-    implements _$$ResetStateEventImplCopyWith<$Res> {
-  __$$ResetStateEventImplCopyWithImpl(
-      _$ResetStateEventImpl _value, $Res Function(_$ResetStateEventImpl) _then)
+class __$$SignOutEventImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$SignOutEventImpl>
+    implements _$$SignOutEventImplCopyWith<$Res> {
+  __$$SignOutEventImplCopyWithImpl(
+      _$SignOutEventImpl _value, $Res Function(_$SignOutEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ResetStateEventImpl implements _ResetStateEvent {
-  const _$ResetStateEventImpl();
+class _$SignOutEventImpl implements _SignOutEvent {
+  const _$SignOutEventImpl();
 
   @override
   String toString() {
-    return 'UserEvent.resetState()';
+    return 'UserEvent.signOut()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ResetStateEventImpl);
+        (other.runtimeType == runtimeType && other is _$SignOutEventImpl);
   }
 
   @override
@@ -436,9 +436,9 @@ class _$ResetStateEventImpl implements _ResetStateEvent {
     required TResult Function(String email, String password) signIn,
     required TResult Function(String email, String password, String name)
         signUp,
-    required TResult Function() resetState,
+    required TResult Function() signOut,
   }) {
-    return resetState();
+    return signOut();
   }
 
   @override
@@ -446,9 +446,9 @@ class _$ResetStateEventImpl implements _ResetStateEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email, String password)? signIn,
     TResult? Function(String email, String password, String name)? signUp,
-    TResult? Function()? resetState,
+    TResult? Function()? signOut,
   }) {
-    return resetState?.call();
+    return signOut?.call();
   }
 
   @override
@@ -456,11 +456,11 @@ class _$ResetStateEventImpl implements _ResetStateEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email, String password)? signIn,
     TResult Function(String email, String password, String name)? signUp,
-    TResult Function()? resetState,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
-    if (resetState != null) {
-      return resetState();
+    if (signOut != null) {
+      return signOut();
     }
     return orElse();
   }
@@ -470,9 +470,9 @@ class _$ResetStateEventImpl implements _ResetStateEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_SignInEvent value) signIn,
     required TResult Function(_SignUpEvent value) signUp,
-    required TResult Function(_ResetStateEvent value) resetState,
+    required TResult Function(_SignOutEvent value) signOut,
   }) {
-    return resetState(this);
+    return signOut(this);
   }
 
   @override
@@ -480,9 +480,9 @@ class _$ResetStateEventImpl implements _ResetStateEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_SignInEvent value)? signIn,
     TResult? Function(_SignUpEvent value)? signUp,
-    TResult? Function(_ResetStateEvent value)? resetState,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) {
-    return resetState?.call(this);
+    return signOut?.call(this);
   }
 
   @override
@@ -490,18 +490,18 @@ class _$ResetStateEventImpl implements _ResetStateEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SignInEvent value)? signIn,
     TResult Function(_SignUpEvent value)? signUp,
-    TResult Function(_ResetStateEvent value)? resetState,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) {
-    if (resetState != null) {
-      return resetState(this);
+    if (signOut != null) {
+      return signOut(this);
     }
     return orElse();
   }
 }
 
-abstract class _ResetStateEvent implements UserEvent {
-  const factory _ResetStateEvent() = _$ResetStateEventImpl;
+abstract class _SignOutEvent implements UserEvent {
+  const factory _SignOutEvent() = _$SignOutEventImpl;
 }
 
 /// @nodoc

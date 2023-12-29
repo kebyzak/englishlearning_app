@@ -1,0 +1,14 @@
+{
+  "myWords": "My Words",
+  "searchWords": "Search Words",
+  "signOut": "Sign Out",
+  "email": "Email",
+  "password": "Password",
+  "signIn": "Sign In",
+  "doNotHaveAnAccountSignUp": "Do not have an account? Sign Up",
+  "emailOrPasswordIsIncorrect": "Email or password is incorrect",
+  "error": "error",
+  "name": "Name",
+  "signUp": "Sign Up",
+  "alreadyHaveAnAccountSignIn": "Already have an account? Sign In"
+}
